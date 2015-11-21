@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  ChooseColorViewController.h
 //  hearts
 //
 //  Created by Admin on 20.11.15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
-
+@interface ChooseColorViewController : UIViewController<UIPickerViewDelegate, UIPickerViewDataSource>
 
 @end
-
