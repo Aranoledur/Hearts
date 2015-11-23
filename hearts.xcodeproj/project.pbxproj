@@ -418,6 +418,7 @@
 				84E3BDC91BFFB74C0092E517 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84E3BDCA1BFFB74C0092E517 /* Build configuration list for PBXNativeTarget "heartsTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +427,7 @@
 				84E3BDCC1BFFB74C0092E517 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

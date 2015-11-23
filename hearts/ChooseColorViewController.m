@@ -7,6 +7,8 @@
 //
 
 #import "ChooseColorViewController.h"
+#import "QuartzCore/QuartzCore.h"
+
 @import UIKit;
 
 @interface ChooseColorViewController ()
@@ -38,6 +40,10 @@
                      @[@"9", @"9", @"9"] ];
     self.picker.dataSource = self;
     self.picker.delegate = self;
+    
+    self.firstButtonCol.layer.cornerRadius = self.firstButtonCol.bounds.size.width/2.0;
+    self.secondButtonCol.layer.cornerRadius = self.firstButtonCol.bounds.size.width/2.0;
+    self.thirdButtonCol.layer.cornerRadius = self.firstButtonCol.bounds.size.width/2.0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,12 +83,12 @@ int getRandomNumberBetween(int from,int to){
     NSInteger second = [self.picker selectedRowInComponent:1];
     NSInteger third = [self.picker selectedRowInComponent:2];
     float part = 255.f / 10;
-    NSMutableArray *colors;
+    NSMutableArray *colors = [[NSMutableArray alloc] init];
     for (int i = 0; i < 3; ++i) {
-        int red = getRandomNumberBetween(first * part, (first + 1) * part);
-        int green = getRandomNumberBetween(second * part, (second + 1) * part);
-        int blue = getRandomNumberBetween(third * part, (third + 1) * part);
-        [colors addObject:[UIColor colorWithRed:red green:green blue:blue alpha:1.f]];
+        float red = getRandomNumberBetween(first * part, (first + 1) * part);
+        float green = getRandomNumberBetween(second * part, (second + 1) * part);
+        float blue = getRandomNumberBetween(third * part, (third + 1) * part);
+        [colors addObject:[UIColor colorWithRed:red/255 green:green/255 blue:blue/255 alpha:1.f]];
     }
     self.firstButtonCol.backgroundColor = [colors objectAtIndex:0];
     self.secondButtonCol.backgroundColor = [colors objectAtIndex:1];
