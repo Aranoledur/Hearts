@@ -14,6 +14,7 @@
 		84E3BDB81BFFB74C0092E517 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3BDB61BFFB74C0092E517 /* LaunchScreen.xib */; };
 		84E3BDC41BFFB74C0092E517 /* heartsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E3BDC31BFFB74C0092E517 /* heartsTests.m */; };
 		84E3BDCF1BFFBA2A0092E517 /* ChooseColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E3BDCE1BFFBA2A0092E517 /* ChooseColorViewController.m */; };
+		EA4ABC261C05A6EC00674564 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4ABC251C05A6EC00674564 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		84E3BDC31BFFB74C0092E517 /* heartsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = heartsTests.m; sourceTree = "<group>"; };
 		84E3BDCD1BFFBA2A0092E517 /* ChooseColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseColorViewController.h; sourceTree = "<group>"; };
 		84E3BDCE1BFFBA2A0092E517 /* ChooseColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseColorViewController.m; sourceTree = "<group>"; };
+		EA4ABC251C05A6EC00674564 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 		84E3BD981BFFB74B0092E517 = {
 			isa = PBXGroup;
 			children = (
+				EA4ABC251C05A6EC00674564 /* Default-568h@2x.png */,
 				84E3BDA31BFFB74B0092E517 /* hearts */,
 				84E3BDC01BFFB74C0092E517 /* heartsTests */,
 				84E3BDA21BFFB74B0092E517 /* Products */,
@@ -201,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E3BDB31BFFB74C0092E517 /* Main.storyboard in Resources */,
+				EA4ABC261C05A6EC00674564 /* Default-568h@2x.png in Resources */,
 				84E3BDB81BFFB74C0092E517 /* LaunchScreen.xib in Resources */,
 				84E3BDB51BFFB74C0092E517 /* Images.xcassets in Resources */,
 			);
@@ -358,6 +362,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.easygodzilla.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -372,6 +377,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.easygodzilla.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
