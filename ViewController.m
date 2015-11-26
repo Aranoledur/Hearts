@@ -29,6 +29,7 @@
     self.userRecord = [[PhotoRecord alloc] init];
     
     [self getFriendsAndPushTable];
+    self.view.backgroundColor = self.choosedColor;
     
 }
 

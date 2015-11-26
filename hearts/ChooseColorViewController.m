@@ -8,6 +8,7 @@
 
 #import "ChooseColorViewController.h"
 #import "QuartzCore/QuartzCore.h"
+#import "ViewController.h"
 
 @import UIKit;
 
@@ -22,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (weak, nonatomic) IBOutlet UIView *buttonContainer;
 @property (weak, nonatomic) IBOutlet UIButton *buttonBack;
+@property (nonatomic, strong) UIColor *choosedColor;
 @end
 
 @implementation ChooseColorViewController
@@ -165,6 +167,7 @@ double DEGREES_TO_RADIANS(float angle){
         [CATransaction commit];
     }];
 }
+
 - (IBAction)buttonBackClicked:(id)sender {
     self.buttonBack.hidden = YES;
     CGAffineTransform transform = CGAffineTransformMakeScale(0.f, 0.f);
@@ -173,6 +176,20 @@ double DEGREES_TO_RADIANS(float angle){
     CGAffineTransform transform1 = CGAffineTransformMakeScale(1.0f, 1.f);
     self.containerView.transform = transform1;
     [_containerView setAlpha:1.0f];
+}
+
+- (IBAction)colorButtonTouched:(UIButton *)sender {
+    self.choosedColor = sender.backgroundColor;
+    [self performSegueWithIdentifier:@"ToLoginSegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue identifier] isEqualToString:@"ToLoginSegue"]) {
+        if([segue.destinationViewController isKindOfClass:[ViewController class]]){
+            ViewController *loginView = (ViewController *)segue.destinationViewController;
+            loginView.choosedColor = self.choosedColor;
+        }
+    }
 }
 
 /*

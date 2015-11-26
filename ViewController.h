@@ -20,6 +20,8 @@
 @property (nonatomic, strong) NSString* userId;
 @property (nonatomic, strong) ListViewController* listView;
 @property (nonatomic, strong) PhotoRecord *userRecord;
+@property (nonatomic, strong) UIColor *choosedColor;
+
 -(void)getFriendsAndPushTable;
 - (IBAction)buttonPushAction:(id)sender;
 -(NSString *)getFileNameFromUrl:(NSString *)urlString;
