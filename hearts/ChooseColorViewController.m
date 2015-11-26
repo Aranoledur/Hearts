@@ -86,7 +86,7 @@ double DEGREES_TO_RADIANS(float angle){
     return ((angle) / 180.0 * M_PI);
 }
 
-- (void) runSpinAnimationOnView:(UIView*)view duration:(CGFloat)duration repeat:(float)repeat;
+- (void) runSpinAnimationOnView:(UIView*)view duration:(CGFloat)duration repeat:(float)repeat
 {
     CABasicAnimation* rotationAnimation;
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
@@ -96,6 +96,29 @@ double DEGREES_TO_RADIANS(float angle){
     rotationAnimation.repeatCount = repeat;
     
     [view.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+}
+
+-(void) runSpinAnimationForButton:(UIView*)view duration:(CGFloat)duration
+{
+    UIView *parent = [view superview];
+    CGPoint rotationPoint = [parent convertPoint:parent.center fromView:parent.superview];
+    
+    CGFloat minX   = CGRectGetMinX(view.frame);
+    CGFloat minY   = CGRectGetMinY(view.frame);
+    CGFloat width  = CGRectGetWidth(view.frame);
+    CGFloat height = CGRectGetHeight(view.frame);
+    
+    CGPoint anchorPoint =  CGPointMake((rotationPoint.x-minX)/width,
+                                       (rotationPoint.y-minY)/height);
+    
+    view.layer.anchorPoint = anchorPoint;
+    view.layer.position = rotationPoint;
+    
+    CABasicAnimation *rotate = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotate.toValue = @(M_PI * 2); // The angle we are rotating to
+    rotate.duration = duration;
+    
+    [view.layer addAnimation:rotate forKey:@"myRotationAnimation"];
 }
 
 - (IBAction)buttonClicked:(id)sender {
@@ -119,7 +142,7 @@ double DEGREES_TO_RADIANS(float angle){
         [_containerView setAlpha:0.0f];
     }];
     
-    CGAffineTransform transform = CGAffineTransformMakeScale(0.1f, 0.1f);
+    CGAffineTransform transform = CGAffineTransformMakeScale(0.001f, 0.001f);
     
     [UIView animateWithDuration:1.0f animations:^{
         
@@ -136,77 +159,11 @@ double DEGREES_TO_RADIANS(float angle){
         [CATransaction setCompletionBlock:^{
             self.buttonBack.hidden = NO;
         }];
-        [self runSpinAnimationOnView: self.buttonContainer duration:4.f repeat:1];
+        [self runSpinAnimationForButton:self.firstButtonCol duration:1.f];
+        [self runSpinAnimationForButton:self.secondButtonCol duration:1.f];
+        [self runSpinAnimationForButton:self.thirdButtonCol duration:1.f];
         [CATransaction commit];
     }];
-    
-//    UIView* imView = self.picker;
-//    
-//    CGPoint point0 = imView.layer.position;
-//    CGPoint point1 = { point0.x, point0.y - 50 };
-//    
-//    CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"position"];
-//    anim.fromValue    = [NSValue valueWithCGPoint:point0];
-//    anim.toValue  = [NSValue valueWithCGPoint:point1];
-//    anim.duration   = 1.5f;
-//    anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-//    
-//    // First we update the model layer's property.
-//    imView.layer.position = point1;
-//    
-//    // Now we attach the animation.
-//    [imView.layer  addAnimation:anim forKey:@"position"];
-    
-    {
-//        UIView *imageViewForAnimation = self.picker;
-//        imageViewForAnimation.alpha = 1.0f;
-//        CGRect imageFrame = imageViewForAnimation.frame;
-//        //Your image frame.origin from where the animation need to get start
-//        CGPoint viewOrigin = imageViewForAnimation.frame.origin;
-//        viewOrigin.y = viewOrigin.y + imageFrame.size.height / 2.0f;
-//        viewOrigin.x = viewOrigin.x + imageFrame.size.width / 2.0f;
-        
-//        imageViewForAnimation.frame = imageFrame;
-//        imageViewForAnimation.layer.position = viewOrigin;
-//        [self.view addSubview:imageViewForAnimation];
-        
-        // Set up fade out effect
-//        CABasicAnimation *fadeOutAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-//        [fadeOutAnimation setToValue:[NSNumber numberWithFloat:0.3]];
-//        fadeOutAnimation.fillMode = kCAFillModeForwards;
-//        fadeOutAnimation.removedOnCompletion = NO;
-//        
-//        // Set up scaling
-//        CABasicAnimation *resizeAnimation = [CABasicAnimation animationWithKeyPath:@"bounds.size"];
-//        [resizeAnimation setToValue:[NSValue valueWithCGSize:CGSizeMake(40.0f, imageFrame.size.height * (40.0f / imageFrame.size.width))]];
-//        resizeAnimation.fillMode = kCAFillModeForwards;
-//        resizeAnimation.removedOnCompletion = NO;
-//        
-//        // Set up path movement
-//        CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-//        pathAnimation.calculationMode = kCAAnimationPaced;
-//        pathAnimation.fillMode = kCAFillModeForwards;
-//        pathAnimation.removedOnCompletion = NO;
-//        //Setting Endpoint of the animation
-//        CGPoint endPoint = CGPointMake(viewOrigin.x - 30.0f, viewOrigin.x + 40.0f);
-//        //to end animation in last tab use
-//        //CGPoint endPoint = CGPointMake( 320-40.0f, 480.0f);
-//        CGMutablePathRef curvedPath = CGPathCreateMutable();
-//        CGPathMoveToPoint(curvedPath, NULL, viewOrigin.x, viewOrigin.y);
-//        CGPathAddCurveToPoint(curvedPath, NULL, endPoint.x, viewOrigin.y, endPoint.x, viewOrigin.y, endPoint.x, endPoint.y);
-//        pathAnimation.path = curvedPath;
-//        CGPathRelease(curvedPath);
-//        
-//        CAAnimationGroup *group = [CAAnimationGroup animation];
-//        group.fillMode = kCAFillModeForwards;
-//        group.removedOnCompletion = NO;
-//        [group setAnimations:[NSArray arrayWithObjects:fadeOutAnimation, pathAnimation, resizeAnimation, nil]];
-//        group.duration = 0.7f;
-//        group.delegate = self;
-//        [group setValue:imageViewForAnimation forKey:@"imageViewBeingAnimated"];
-//        
-//        [imageViewForAnimation.layer addAnimation:group forKey:@"savingAnimation"];
-    }
 }
 - (IBAction)buttonBackClicked:(id)sender {
     self.buttonBack.hidden = YES;

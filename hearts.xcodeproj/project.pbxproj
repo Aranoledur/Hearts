@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		84E3BDA71BFFB74B0092E517 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E3BDA61BFFB74B0092E517 /* main.m */; };
-		84E3BDAA1BFFB74B0092E517 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E3BDA91BFFB74B0092E517 /* AppDelegate.m */; };
 		84E3BDB31BFFB74C0092E517 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E3BDB11BFFB74C0092E517 /* Main.storyboard */; };
 		84E3BDB51BFFB74C0092E517 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E3BDB41BFFB74C0092E517 /* Images.xcassets */; };
 		84E3BDB81BFFB74C0092E517 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E3BDB61BFFB74C0092E517 /* LaunchScreen.xib */; };
 		84E3BDC41BFFB74C0092E517 /* heartsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E3BDC31BFFB74C0092E517 /* heartsTests.m */; };
 		84E3BDCF1BFFBA2A0092E517 /* ChooseColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E3BDCE1BFFBA2A0092E517 /* ChooseColorViewController.m */; };
+		EA017D2B1C07243F00259E94 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA017D281C07243F00259E94 /* Bolts.framework */; };
+		EA017D3C1C07246400259E94 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA017D301C07246400259E94 /* AppDelegate.m */; };
+		EA017D3D1C07246400259E94 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = EA017D321C07246400259E94 /* ImageDownloader.m */; };
+		EA017D3E1C07246400259E94 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA017D341C07246400259E94 /* ListViewController.m */; };
+		EA017D401C07246400259E94 /* PendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = EA017D371C07246400259E94 /* PendingOperations.m */; };
+		EA017D411C07246400259E94 /* PhotoRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = EA017D391C07246400259E94 /* PhotoRecord.m */; };
+		EA017D421C07246400259E94 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA017D3B1C07246400259E94 /* ViewController.m */; };
+		EA017D451C07262F00259E94 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA017D431C07262F00259E94 /* FBSDKCoreKit.framework */; };
+		EA017D461C07262F00259E94 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA017D441C07262F00259E94 /* FBSDKLoginKit.framework */; };
 		EA4ABC261C05A6EC00674564 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4ABC251C05A6EC00674564 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -31,8 +39,6 @@
 		84E3BDA11BFFB74B0092E517 /* hearts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hearts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E3BDA51BFFB74B0092E517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84E3BDA61BFFB74B0092E517 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		84E3BDA81BFFB74B0092E517 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		84E3BDA91BFFB74B0092E517 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		84E3BDB21BFFB74C0092E517 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84E3BDB41BFFB74C0092E517 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		84E3BDB71BFFB74C0092E517 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -41,6 +47,21 @@
 		84E3BDC31BFFB74C0092E517 /* heartsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = heartsTests.m; sourceTree = "<group>"; };
 		84E3BDCD1BFFBA2A0092E517 /* ChooseColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseColorViewController.h; sourceTree = "<group>"; };
 		84E3BDCE1BFFBA2A0092E517 /* ChooseColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseColorViewController.m; sourceTree = "<group>"; };
+		EA017D281C07243F00259E94 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		EA017D2F1C07246400259E94 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
+		EA017D301C07246400259E94 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../AppDelegate.m; sourceTree = "<group>"; };
+		EA017D311C07246400259E94 /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
+		EA017D321C07246400259E94 /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
+		EA017D331C07246400259E94 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		EA017D341C07246400259E94 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		EA017D361C07246400259E94 /* PendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingOperations.h; sourceTree = "<group>"; };
+		EA017D371C07246400259E94 /* PendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingOperations.m; sourceTree = "<group>"; };
+		EA017D381C07246400259E94 /* PhotoRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoRecord.h; sourceTree = "<group>"; };
+		EA017D391C07246400259E94 /* PhotoRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoRecord.m; sourceTree = "<group>"; };
+		EA017D3A1C07246400259E94 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EA017D3B1C07246400259E94 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EA017D431C07262F00259E94 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		EA017D441C07262F00259E94 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		EA4ABC251C05A6EC00674564 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,6 +70,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA017D2B1C07243F00259E94 /* Bolts.framework in Frameworks */,
+				EA017D451C07262F00259E94 /* FBSDKCoreKit.framework in Frameworks */,
+				EA017D461C07262F00259E94 /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +89,7 @@
 		84E3BD981BFFB74B0092E517 = {
 			isa = PBXGroup;
 			children = (
+				EA017D2E1C07244700259E94 /* ForFb */,
 				EA4ABC251C05A6EC00674564 /* Default-568h@2x.png */,
 				84E3BDA31BFFB74B0092E517 /* hearts */,
 				84E3BDC01BFFB74C0092E517 /* heartsTests */,
@@ -84,8 +109,8 @@
 		84E3BDA31BFFB74B0092E517 /* hearts */ = {
 			isa = PBXGroup;
 			children = (
-				84E3BDA81BFFB74B0092E517 /* AppDelegate.h */,
-				84E3BDA91BFFB74B0092E517 /* AppDelegate.m */,
+				EA017D2F1C07246400259E94 /* AppDelegate.h */,
+				EA017D301C07246400259E94 /* AppDelegate.m */,
 				84E3BDB11BFFB74C0092E517 /* Main.storyboard */,
 				84E3BDCD1BFFBA2A0092E517 /* ChooseColorViewController.h */,
 				84E3BDCE1BFFBA2A0092E517 /* ChooseColorViewController.m */,
@@ -120,6 +145,26 @@
 				84E3BDC21BFFB74C0092E517 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EA017D2E1C07244700259E94 /* ForFb */ = {
+			isa = PBXGroup;
+			children = (
+				EA017D281C07243F00259E94 /* Bolts.framework */,
+				EA017D431C07262F00259E94 /* FBSDKCoreKit.framework */,
+				EA017D441C07262F00259E94 /* FBSDKLoginKit.framework */,
+				EA017D311C07246400259E94 /* ImageDownloader.h */,
+				EA017D321C07246400259E94 /* ImageDownloader.m */,
+				EA017D331C07246400259E94 /* ListViewController.h */,
+				EA017D341C07246400259E94 /* ListViewController.m */,
+				EA017D361C07246400259E94 /* PendingOperations.h */,
+				EA017D371C07246400259E94 /* PendingOperations.m */,
+				EA017D381C07246400259E94 /* PhotoRecord.h */,
+				EA017D391C07246400259E94 /* PhotoRecord.m */,
+				EA017D3A1C07246400259E94 /* ViewController.h */,
+				EA017D3B1C07246400259E94 /* ViewController.m */,
+			);
+			name = ForFb;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,9 +269,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84E3BDAA1BFFB74B0092E517 /* AppDelegate.m in Sources */,
+				EA017D3C1C07246400259E94 /* AppDelegate.m in Sources */,
+				EA017D3E1C07246400259E94 /* ListViewController.m in Sources */,
+				EA017D3D1C07246400259E94 /* ImageDownloader.m in Sources */,
+				EA017D421C07246400259E94 /* ViewController.m in Sources */,
+				EA017D411C07246400259E94 /* PhotoRecord.m in Sources */,
 				84E3BDCF1BFFBA2A0092E517 /* ChooseColorViewController.m in Sources */,
 				84E3BDA71BFFB74B0092E517 /* main.m in Sources */,
+				EA017D401C07246400259E94 /* PendingOperations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +407,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = hearts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.easygodzilla.$(PRODUCT_NAME:rfc1034identifier)";
@@ -372,6 +426,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = hearts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.easygodzilla.$(PRODUCT_NAME:rfc1034identifier)";
