@@ -8,9 +8,25 @@
 
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <VKSdk/VKSdk.h>
+
+@interface VkDelegate : NSObject<VKSdkDelegate>
+@end
+
+@implementation VkDelegate
+
+-(void) vkSdkAccessAuthorizationFinishedWithResult:(VKAuthorizationResult *)result{
+    NSLog(@"VK authorization success");
+}
+
+-(void) vkSdkUserAuthorizationFailed{
+    
+}
+
+@end
 
 @interface AppDelegate ()
-
+@property (nonatomic, assign) VkDelegate* vkDelegate;
 @end
 
 @implementation AppDelegate
@@ -20,6 +36,12 @@
     // Override point for customization after application launch.
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
+    
+    VKSdk* vksdk = [VKSdk initializeWithAppId:@"5165397"];
+    if (vksdk)
+    {
+        [vksdk registerDelegate:self.vkDelegate];
+    }
     return YES;
 }
 
@@ -47,11 +69,19 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                                          openURL:url
-                                                sourceApplication:sourceApplication
-                                                       annotation:annotation
-            ];
+    
+    if([url.absoluteString containsString:@"fb"])
+    {
+        return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                              openURL:url
+                                                    sourceApplication:sourceApplication
+                                                           annotation:annotation
+                ];
+    }
+    else
+    {
+        return [VKSdk processOpenURL:url fromApplication:sourceApplication];
+    }
 }
 
 @end

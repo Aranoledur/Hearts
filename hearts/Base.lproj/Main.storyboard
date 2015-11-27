@@ -165,10 +165,10 @@
             </objects>
             <point key="canvasLocation" x="661" y="245"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="auG-Pi-ck4">
             <objects>
-                <viewController id="3qS-ew-2kU" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="3qS-ew-2kU" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c4F-bi-31n"/>
                         <viewControllerLayoutGuide type="bottom" id="r6L-Ym-kds"/>
@@ -177,8 +177,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqC-OQ-uzK">
-                                <rect key="frame" x="552" y="550" width="32" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqC-OQ-uzK">
+                                <rect key="frame" x="548" y="550" width="32" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Next">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -187,21 +187,21 @@
                                     <action selector="buttonPushAction:" destination="3qS-ew-2kU" eventType="touchUpInside" id="TQj-0l-yCl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Z-w2-oLO" customClass="FBSDKLoginButton">
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Z-w2-oLO" customClass="FBSDKLoginButton">
                                 <rect key="frame" x="277" y="358" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ax-wB-RLC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ax-wB-RLC">
                                 <rect key="frame" x="279" y="323" width="42" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nAM-Ul-AIx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nAM-Ul-AIx">
                                 <rect key="frame" x="200" y="81" width="200" height="200"/>
                                 <animations/>
                                 <constraints>
@@ -209,6 +209,15 @@
                                     <constraint firstAttribute="width" constant="200" id="vBZ-5k-l0x"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eaf-vu-OkG">
+                                <rect key="frame" x="270" y="413" width="61" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <state key="normal" title="Login VK"/>
+                                <connections>
+                                    <action selector="vkAuthorize:" destination="3qS-ew-2kU" eventType="touchUpInside" id="ayK-xK-8FO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -216,8 +225,10 @@
                             <constraint firstItem="Y6Z-w2-oLO" firstAttribute="top" secondItem="9Ax-wB-RLC" secondAttribute="bottom" constant="14" id="1Ad-xI-vLU"/>
                             <constraint firstItem="tqC-OQ-uzK" firstAttribute="trailing" secondItem="Xfj-Th-ltU" secondAttribute="trailingMargin" id="1KJ-ST-dtX"/>
                             <constraint firstItem="9Ax-wB-RLC" firstAttribute="top" secondItem="nAM-Ul-AIx" secondAttribute="bottom" constant="42" id="BcS-t1-Of3"/>
+                            <constraint firstItem="Eaf-vu-OkG" firstAttribute="centerX" secondItem="Xfj-Th-ltU" secondAttribute="centerX" id="D6u-PS-1l0"/>
                             <constraint firstItem="r6L-Ym-kds" firstAttribute="top" secondItem="tqC-OQ-uzK" secondAttribute="bottom" constant="20" id="IhX-Ta-S6Q"/>
                             <constraint firstItem="nAM-Ul-AIx" firstAttribute="top" secondItem="c4F-bi-31n" secondAttribute="bottom" constant="17" id="NfH-CS-0Iu"/>
+                            <constraint firstItem="Eaf-vu-OkG" firstAttribute="top" secondItem="Y6Z-w2-oLO" secondAttribute="bottom" constant="25" id="Ysk-4Q-VHN"/>
                             <constraint firstAttribute="centerX" secondItem="nAM-Ul-AIx" secondAttribute="centerX" id="hS7-AZ-YW0"/>
                             <constraint firstAttribute="centerX" secondItem="Y6Z-w2-oLO" secondAttribute="centerX" id="vJk-q8-RWw"/>
                             <constraint firstAttribute="centerX" secondItem="9Ax-wB-RLC" secondAttribute="centerX" id="zez-j4-UWs"/>

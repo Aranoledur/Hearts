@@ -6,16 +6,17 @@
 //  Copyright (c) 2015 user. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoginViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "PhotoRecord.h"
-#include "ListViewController.h"
+#import "ListViewController.h"
+#import <VKSdk/VKSdk.h>
 
-@interface ViewController ()
+@interface LoginViewController ()
 
 @end
 
-@implementation ViewController
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -115,6 +116,10 @@ error:	(NSError *)error
     
     // 1
     [self.profilePictureView setImage:self.userRecord.image];
+}
+
+- (IBAction)vkAuthorize:(UIButton *)sender {
+    [VKSdk authorize:@[VK_PER_FRIENDS]];
 }
 
 @end

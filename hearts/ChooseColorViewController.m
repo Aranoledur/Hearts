@@ -8,7 +8,7 @@
 
 #import "ChooseColorViewController.h"
 #import "QuartzCore/QuartzCore.h"
-#import "ViewController.h"
+#import "LoginViewController.h"
 
 @import UIKit;
 
@@ -185,8 +185,8 @@ double DEGREES_TO_RADIANS(float angle){
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([[segue identifier] isEqualToString:@"ToLoginSegue"]) {
-        if([segue.destinationViewController isKindOfClass:[ViewController class]]){
-            ViewController *loginView = (ViewController *)segue.destinationViewController;
+        if([segue.destinationViewController isKindOfClass:[LoginViewController class]]){
+            LoginViewController *loginView = (LoginViewController *)segue.destinationViewController;
             loginView.choosedColor = self.choosedColor;
         }
     }

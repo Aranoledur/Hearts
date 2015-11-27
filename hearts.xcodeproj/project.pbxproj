@@ -19,7 +19,7 @@
 		EA017D3E1C07246400259E94 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA017D341C07246400259E94 /* ListViewController.m */; };
 		EA017D401C07246400259E94 /* PendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = EA017D371C07246400259E94 /* PendingOperations.m */; };
 		EA017D411C07246400259E94 /* PhotoRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = EA017D391C07246400259E94 /* PhotoRecord.m */; };
-		EA017D421C07246400259E94 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA017D3B1C07246400259E94 /* ViewController.m */; };
+		EA017D421C07246400259E94 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA017D3B1C07246400259E94 /* LoginViewController.m */; };
 		EA017D451C07262F00259E94 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA017D431C07262F00259E94 /* FBSDKCoreKit.framework */; };
 		EA017D461C07262F00259E94 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA017D441C07262F00259E94 /* FBSDKLoginKit.framework */; };
 		EA4ABC261C05A6EC00674564 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA4ABC251C05A6EC00674564 /* Default-568h@2x.png */; };
@@ -58,8 +58,8 @@
 		EA017D371C07246400259E94 /* PendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingOperations.m; sourceTree = "<group>"; };
 		EA017D381C07246400259E94 /* PhotoRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoRecord.h; sourceTree = "<group>"; };
 		EA017D391C07246400259E94 /* PhotoRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoRecord.m; sourceTree = "<group>"; };
-		EA017D3A1C07246400259E94 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		EA017D3B1C07246400259E94 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EA017D3A1C07246400259E94 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		EA017D3B1C07246400259E94 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EA017D431C07262F00259E94 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		EA017D441C07262F00259E94 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		EA4ABC251C05A6EC00674564 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -161,8 +161,8 @@
 				EA017D371C07246400259E94 /* PendingOperations.m */,
 				EA017D381C07246400259E94 /* PhotoRecord.h */,
 				EA017D391C07246400259E94 /* PhotoRecord.m */,
-				EA017D3A1C07246400259E94 /* ViewController.h */,
-				EA017D3B1C07246400259E94 /* ViewController.m */,
+				EA017D3A1C07246400259E94 /* LoginViewController.h */,
+				EA017D3B1C07246400259E94 /* LoginViewController.m */,
 			);
 			name = ForFb;
 			sourceTree = "<group>";
@@ -272,7 +272,7 @@
 				EA017D3C1C07246400259E94 /* AppDelegate.m in Sources */,
 				EA017D3E1C07246400259E94 /* ListViewController.m in Sources */,
 				EA017D3D1C07246400259E94 /* ImageDownloader.m in Sources */,
-				EA017D421C07246400259E94 /* ViewController.m in Sources */,
+				EA017D421C07246400259E94 /* LoginViewController.m in Sources */,
 				EA017D411C07246400259E94 /* PhotoRecord.m in Sources */,
 				84E3BDCF1BFFBA2A0092E517 /* ChooseColorViewController.m in Sources */,
 				84E3BDA71BFFB74B0092E517 /* main.m in Sources */,
@@ -410,6 +410,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/vk-ios-sdk-master",
 				);
 				INFOPLIST_FILE = hearts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -429,6 +430,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/vk-ios-sdk-master",
 				);
 				INFOPLIST_FILE = hearts/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

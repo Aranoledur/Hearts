@@ -12,7 +12,7 @@
 
 @class ListViewController;
 
-@interface ViewController : UIViewController<FBSDKLoginButtonDelegate, ImageDownloaderDelegate>
+@interface LoginViewController : UIViewController<FBSDKLoginButtonDelegate, ImageDownloaderDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *fbUserNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureView;
 
