@@ -10,7 +10,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "PhotoRecord.h"
 #import "ListViewController.h"
-#import <VKSdk/VKSdk.h>
+#import "VKAuthorizeController.h"
 
 @interface LoginViewController ()
 
@@ -31,6 +31,8 @@
     
     [self getFriendsAndPushTable];
     self.view.backgroundColor = self.choosedColor;
+    
+    [[VKSdk instance] registerDelegate:self];
     
 }
 
@@ -65,7 +67,7 @@ error:	(NSError *)error
                 self.fbUserNameLabel.text = nameOfLoginUser;
                 NSURL *url = [[NSURL alloc] initWithString:imageStringOfLoginUser];
                 self.userRecord.URL = url;
-                self.userRecord.name = [result valueForKey:@"name"];
+                self.userRecord.name = nameOfLoginUser;
                 self.userRecord.fileName = [self getFileNameFromUrl:imageStringOfLoginUser];
                 ImageDownloader *imageDownloader = [[ImageDownloader alloc] initWithPhotoRecord:self.userRecord atIndexPath:nil delegate:self];
                 NSOperationQueue *queue = [[NSOperationQueue alloc] init];
@@ -103,13 +105,9 @@ error:	(NSError *)error
 }
 
 -(NSString *)getFileNameFromUrl:(NSString *)urlString{
-    NSRange r1 = [urlString rangeOfString:@"50x50/"];
-    if(!r1.length)
-        r1 = [urlString rangeOfString:@"x200/"];
-    NSRange r2 = [urlString rangeOfString:@".jpg"];
-    NSRange rSub = NSMakeRange(r1.location + r1.length, r2.location - r1.location - r1.length + 4);
-    NSString *subFileName = [urlString substringWithRange:rSub];
-    return subFileName;
+    NSArray *parts = [urlString componentsSeparatedByString:@"/"];
+    NSString *filename = [parts lastObject];
+    return filename;
 }
 
 - (void)imageDownloaderDidFinish:(ImageDownloader *)downloader {
@@ -119,7 +117,94 @@ error:	(NSError *)error
 }
 
 - (IBAction)vkAuthorize:(UIButton *)sender {
-    [VKSdk authorize:@[VK_PER_FRIENDS]];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"vk://"]]) {
+        [VKSdk authorize:@[VK_PER_FRIENDS]];
+    }
+    else {
+        VKAuthorizeController *controller = [[VKAuthorizeController alloc] initWith:@"5165397" andPermissions:@[VK_PER_FRIENDS] revokeAccess:NO displayType:VK_DISPLAY_IOS];
+//        [self.navigationController pushViewController:controller animated:YES];
+        [self presentViewController:controller animated:YES completion:nil];
+    }
 }
 
+#pragma mark VKSdkDelegate methods
+-(void) vkSdkAccessAuthorizationFinishedWithResult:(VKAuthorizationResult *)result{
+    NSLog(@"VK authorization success");
+    if([VKSdk accessToken]){
+        VKRequest *userReq = [[VKApi users] get:@{VK_API_FIELDS : @"photo_200_orig"}];
+        [userReq executeWithResultBlock:^(VKResponse *response){
+            VKUsersArray *userInfo = response.parsedModel;
+            VKUser *user = [userInfo.items lastObject];
+            NSString *nameOfLoginUser = [user.first_name stringByAppendingString:user.last_name];
+            NSString *imageStringOfLoginUser = user.photo_200_orig;
+            self.fbUserNameLabel.text = nameOfLoginUser;
+            NSURL *url = [[NSURL alloc] initWithString:imageStringOfLoginUser];
+            self.userRecord.URL = url;
+            self.userRecord.name = nameOfLoginUser;
+            self.userRecord.fileName = [self getFileNameFromUrl:imageStringOfLoginUser];
+            
+            ImageDownloader *imageDownloader = [[ImageDownloader alloc] initWithPhotoRecord:self.userRecord atIndexPath:nil delegate:self];
+            NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+            [queue addOperation:imageDownloader];
+        }
+                             errorBlock:^(NSError *error){
+                                 if (error.code != VK_API_ERROR) {
+                                     [error.vkError.request repeat];
+                                 }
+                                 else {
+                                     NSLog(@"VK error: %@", error);
+                                 }
+                             }];
+        
+        VKRequest *friendsReq = [[VKApi friends] get:@{VK_API_FIELDS : @"photo_200_orig"}];
+        [friendsReq executeWithResultBlock:^(VKResponse * response) {
+            VKUsersArray *friendsArr = response.parsedModel;
+            NSMutableArray *records = [NSMutableArray array];
+            self.listView = [[ListViewController alloc] init];
+            for (VKUser* user in friendsArr.items) {
+                PhotoRecord *record = [[PhotoRecord alloc] init];
+                NSString *imageStringOfLoginUser = user.photo_200_orig;
+                record.URL = [NSURL URLWithString:imageStringOfLoginUser];
+                record.name = [user.first_name stringByAppendingString:user.last_name];
+                
+                
+                record.fileName = [self getFileNameFromUrl:imageStringOfLoginUser];
+                
+                [records addObject:record];
+                record = nil;
+            }
+            self.listView.photos = records;
+            [self.navigationController pushViewController:self.listView animated:YES];
+            
+            
+        } errorBlock:^(NSError * error) {
+            if (error.code != VK_API_ERROR) {
+                [error.vkError.request repeat];
+            }
+            else {
+                NSLog(@"VK error: %@", error);
+            } 
+        }];
+    }
+}
+
+-(void) vkSdkUserAuthorizationFailed{
+    NSLog(@"VK authorization fail");
+}
+
+- (void)vkSdkAccessTokenUpdated:(VKAccessToken *)newToken oldToken:(VKAccessToken *)oldToken{
+    
+}
+
+#pragma mark VKSdkUIDelegagte methods
+-(void) vkSdkNeedCaptchaEnter:(VKError *)captchaError{
+    VKCaptchaViewController * vc = [VKCaptchaViewController captchaControllerWithError:captchaError];
+    [vc presentIn:self];
+}
+
+-(void)vkSdkShouldPresentViewController:(UIViewController *)controller{
+    [self presentViewController:controller animated:YES completion:nil];
+    
+}
 @end

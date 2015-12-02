@@ -8,25 +8,9 @@
 
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <VKSdk/VKSdk.h>
-
-@interface VkDelegate : NSObject<VKSdkDelegate>
-@end
-
-@implementation VkDelegate
-
--(void) vkSdkAccessAuthorizationFinishedWithResult:(VKAuthorizationResult *)result{
-    NSLog(@"VK authorization success");
-}
-
--(void) vkSdkUserAuthorizationFailed{
-    
-}
-
-@end
+#import "VKSdk.h"
 
 @interface AppDelegate ()
-@property (nonatomic, assign) VkDelegate* vkDelegate;
 @end
 
 @implementation AppDelegate
@@ -37,11 +21,7 @@
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
     
-    VKSdk* vksdk = [VKSdk initializeWithAppId:@"5165397"];
-    if (vksdk)
-    {
-        [vksdk registerDelegate:self.vkDelegate];
-    }
+    [VKSdk initializeWithAppId:@"5165397"];
     return YES;
 }
 

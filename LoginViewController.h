@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "ImageDownloader.h"
+#import "VKSdk.h"
 
 @class ListViewController;
 
-@interface LoginViewController : UIViewController<FBSDKLoginButtonDelegate, ImageDownloaderDelegate>
+@interface LoginViewController : UIViewController<FBSDKLoginButtonDelegate, ImageDownloaderDelegate, VKSdkDelegate, VKSdkUIDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *fbUserNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureView;
 
