@@ -45,12 +45,15 @@
     self.picker.dataSource = self;
     self.picker.delegate = self;
     
-    self.firstButtonCol.layer.cornerRadius = self.firstButtonCol.bounds.size.width/2.0;
-    self.secondButtonCol.layer.cornerRadius = self.firstButtonCol.bounds.size.width/2.0;
-    self.thirdButtonCol.layer.cornerRadius = self.firstButtonCol.bounds.size.width/2.0;
-    CGAffineTransform transform = CGAffineTransformMakeScale(0.f, 0.f);
-    self.buttonContainer.hidden = YES;
-    self.buttonContainer.transform = transform;
+    float devider = self.buttonBack ? 2.f : 1.f;
+    self.firstButtonCol.layer.cornerRadius = self.firstButtonCol.bounds.size.width/devider;
+    self.secondButtonCol.layer.cornerRadius = self.firstButtonCol.bounds.size.width/devider;
+    self.thirdButtonCol.layer.cornerRadius = self.firstButtonCol.bounds.size.width/devider;
+    if(self.buttonBack) {
+        CGAffineTransform transform = CGAffineTransformMakeScale(0.f, 0.f);
+        self.buttonContainer.hidden = YES;
+        self.buttonContainer.transform = transform;
+    }
     [self.picker selectRow:5 inComponent:0 animated:NO];
     [self.picker selectRow:5 inComponent:1 animated:NO];
     [self.picker selectRow:5 inComponent:2 animated:NO];
@@ -123,6 +126,23 @@ double DEGREES_TO_RADIANS(float angle){
     [view.layer addAnimation:rotate forKey:@"myRotationAnimation"];
 }
 
+- (void)showColorButtons {
+    CGAffineTransform transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+    self.buttonContainer.hidden = NO;
+    [UIView animateWithDuration:1.f animations:^{
+        self.buttonContainer.transform = transform;
+    }];
+    
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        self.buttonBack.hidden = NO;
+    }];
+    [self runSpinAnimationForButton:self.firstButtonCol duration:1.f];
+    [self runSpinAnimationForButton:self.secondButtonCol duration:1.f];
+    [self runSpinAnimationForButton:self.thirdButtonCol duration:1.f];
+    [CATransaction commit];
+}
+
 - (IBAction)buttonClicked:(id)sender {
     NSInteger first = [self.picker selectedRowInComponent:0];
     NSInteger second = [self.picker selectedRowInComponent:1];
@@ -140,32 +160,25 @@ double DEGREES_TO_RADIANS(float angle){
     self.thirdButtonCol.backgroundColor = [colors objectAtIndex:2];
     
     
-    [UIView animateWithDuration:2.0f animations:^{
-        [_containerView setAlpha:0.0f];
-    }];
-    
-    CGAffineTransform transform = CGAffineTransformMakeScale(0.001f, 0.001f);
-    
-    [UIView animateWithDuration:1.0f animations:^{
+    if(self.buttonBack) {
         
-        self.containerView.transform = transform;
-    } completion:^(BOOL finished){
-        
-        CGAffineTransform transform = CGAffineTransformMakeScale(1.0f, 1.0f);
-        self.buttonContainer.hidden = NO;
-        [UIView animateWithDuration:1.f animations:^{
-            self.buttonContainer.transform = transform;
+        [UIView animateWithDuration:2.0f animations:^{
+            [_containerView setAlpha:0.0f];
         }];
         
-        [CATransaction begin];
-        [CATransaction setCompletionBlock:^{
-            self.buttonBack.hidden = NO;
+        CGAffineTransform transform = CGAffineTransformMakeScale(0.001f, 0.001f);
+        
+        [UIView animateWithDuration:1.0f animations:^{
+            
+            self.containerView.transform = transform;
+        } completion:^(BOOL finished){
+            
+            [self showColorButtons];
         }];
-        [self runSpinAnimationForButton:self.firstButtonCol duration:1.f];
-        [self runSpinAnimationForButton:self.secondButtonCol duration:1.f];
-        [self runSpinAnimationForButton:self.thirdButtonCol duration:1.f];
-        [CATransaction commit];
-    }];
+    }
+    else {
+//        [self showColorButtons];
+    }
 }
 
 - (IBAction)buttonBackClicked:(id)sender {
